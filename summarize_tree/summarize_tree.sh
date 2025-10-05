@@ -5,7 +5,7 @@ DIR="$1"
 cd "$DIR" || exit 1
 
 # Total counts of dirs and files
-num_dir=$(($(find . -type d | wc -l) -1 )) # Exclude root dir
+num_dir=$(find . -type d | wc -l)
 num_file=$(find . -type f | wc -l)
 
 echo "There were $num_dir directories."
