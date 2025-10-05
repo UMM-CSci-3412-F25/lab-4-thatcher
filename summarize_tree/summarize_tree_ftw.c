@@ -5,7 +5,6 @@
 #define MAX_FTW_DEPTH 16
 
 static int num_dirs, num_regular;
-static char *original_dir;
 
 static int callback(const char *fpath, const struct stat *sb, int typeflag) {
     switch(typeflag){
@@ -31,12 +30,10 @@ int main(int argc, char** argv) {
 
     num_dirs = 0;
     num_regular = 0;
-    original_dir = argv[1]; // Save starting dir
 
     ftw(argv[1], callback, MAX_FTW_DEPTH);
 
     // Print out the results
-    printf("Processed all the files from <%s>.\n", original_dir);
     printf("There were %d directories.\n", num_dirs);
     printf("There were %d regular files.\n", num_regular);
 
